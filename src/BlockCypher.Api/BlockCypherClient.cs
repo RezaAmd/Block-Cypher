@@ -1,12 +1,10 @@
 ﻿using BlockCypher.Api.Enums;
 using BlockCypher.Api.Extension;
 using BlockCypher.Api.Models;
-using BlockCypher.Api.Modules.Address;
 using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Service;
 using System.Net;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BlockCypher.Api
@@ -26,32 +24,28 @@ namespace BlockCypher.Api
 
         }
         #endregion
-        public async Task<AddressKeychain> CreateAsync(BlockCypherCoinType coin = BlockCypherCoinType.Bitcoin)
+
+        public async Task<BCAddressKeychain> CreateAsync(BlockCypherCoinType coin = BlockCypherCoinType.Bitcoin)
         {
             var response = await _restService.RequestAsync(_baseUrl + coin.ToDisplay() + "addrs", Method.POST);
             if (response.StatusCode == HttpStatusCode.OK)
-                return JsonConvert.DeserializeObject<AddressKeychain>(response.Content);
+                return JsonConvert.DeserializeObject<BCAddressKeychain>(response.Content);
             return default;
         }
 
-        public async Task<BCAddressInfo> GetInfoByAddress(string address)
+        public async Task<BCAddressInfo> GetInfoByAddress(string address, BlockCypherCoinType coin = BlockCypherCoinType.Bitcoin)
         {
-            var result = new BCAddressInfo();
-            var response = await _restService.RequestAsync(_baseUrl + address);
-            if(response.StatusCode == HttpStatusCode.OK)
-            {
-                var deserializedResult = JsonSerializer.Deserialize<AddressInfoResult>(response.Content);
-                result.Balance = deserializedResult.final_balance;
-                result.UnconfirmedBalance = deserializedResult.unconfirmed_balance;
-                result.TotalSent = deserializedResult.total_sent;
-            }
-            return result;
+            var response = await _restService.RequestAsync(_baseUrl + coin.ToDisplay() + "addrs/" + address);
+            if (response.StatusCode == HttpStatusCode.OK)
+                return JsonConvert.DeserializeObject<BCAddressInfo>(response.Content);
+            return default;
         }
 
-        public async Task<object> GetAccountInfoAsync()
+
+        public async Task<BCAccountInfo> GetAccountInfoAsync()
         {
             var response = await _restService.RequestAsync(_baseUrl + "tokens/" + _token);
-            if(response.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK)
                 return JsonConvert.DeserializeObject<BCAccountInfo>(response.Content);
             return default;
         }

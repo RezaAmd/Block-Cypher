@@ -18,11 +18,11 @@ namespace BlockCypher.Api.Modules.Address
         {
             _baseUrl = _baseUrl + version.ToDisplay() + coin.ToDisplay();
         }
-        public async Task<AddressKeychain> CreateAsync()
+        public async Task<BCAddressKeychain> CreateAsync()
         {
             var response = await _restService.RequestAsync(_baseUrl + "addrs", Method.POST);
             if (response.StatusCode == HttpStatusCode.OK)
-                return JsonSerializer.Deserialize<AddressKeychain>(response.Content);
+                return JsonSerializer.Deserialize<BCAddressKeychain>(response.Content);
             return default;
         }
 

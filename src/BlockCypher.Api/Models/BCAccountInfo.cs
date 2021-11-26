@@ -1,33 +1,39 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace BlockCypher.Api.Models
 {
     public class BCAccountInfo
     {
-        public string token { get; set; }
-        public BCLimits limits { get; set; }
-        public BCHits hits { get; set; }
+        [JsonProperty("token")]
+        public string Token { get; set; }
+        [JsonProperty("limits")]
+        public BCLimits Limits { get; set; }
+        [JsonProperty("hits_history")]
+        public List<BCHitHistory> hits { get; set; }
     }
 
     public class BCLimits
     {
         [JsonProperty("api/day")]
-        public int perDay { get; set; }
+        public int PerDay { get; set; }
         [JsonProperty("api/hour")]
-        public int perHour { get; set; }
+        public int PerHour { get; set; }
         [JsonProperty("api/second")]
-        public int perSecond { get; set; }
+        public int PerSecond { get; set; }
         [JsonProperty("confidence/hour")]
-        public int confidencePerHour { get; set; }
+        public int ConfidencePerHour { get; set; }
         [JsonProperty("hooks")]
         public int Hooks { get; set; }
         [JsonProperty("hooks/hour")]
-        public int hooksPerHour { get; set; }
+        public int HooksPerHour { get; set; }
     }
 
-    public class BCHits
+    public class BCHitHistory
     {
         [JsonProperty("api/hour")]
-        public int perHour { get; set; }
+        public int PerHour { get; set; }
+        [JsonProperty("time")]
+        public string Time { get; set; }
     }
 }

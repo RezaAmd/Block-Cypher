@@ -1,6 +1,6 @@
 ﻿namespace BlockCypher.Api.Models
 {
-    public class AddressKeychain
+    public class BCAddressKeychain
     {
         public string PrivateKey { get; set; }
         public string PublicKey { get; set; }
