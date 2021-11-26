@@ -2,11 +2,27 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Reza Ahmadi</Authors>
+    <Company>Technology On It</Company>
+    <Description>Block Cypher api</Description>
+    <PackageProjectUrl>https://github.com/RezaAmd/Block-Cypher</PackageProjectUrl>
+    <PackageIcon>bc-logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/RezaAmd/Block-Cypher</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>BlockCypher, Crypto, Currency</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Rest.Service" Version="1.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="bc-logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
