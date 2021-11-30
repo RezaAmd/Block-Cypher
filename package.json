@@ -1,0 +1,20 @@
+{
+  "name": "block-cypher",
+  "version": "1.0.0",
+  "description": "A .net library application to wrap the [BlockCypher](https://live.blockcypher.com/) Api.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RezaAmd/Block-Cypher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RezaAmd/Block-Cypher/issues"
+  },
+  "homepage": "https://github.com/RezaAmd/Block-Cypher#readme"
+}
