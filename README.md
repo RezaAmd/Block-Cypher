@@ -1,3 +1,4 @@
+[![Generic badge](https://img.shields.io/badge/Status-Under_Construction-red.svg)](https://shields.io/)
 # Block Cypher
  A .net library application to wrap the [BlockCypher Explorer](https://live.blockcypher.com/) web service.
  
