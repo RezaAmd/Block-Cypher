@@ -18,4 +18,3 @@ wallet => { PrivateKey, PublicKey, Address, Wif }
 var addressInfo = await blockCypher.GetInfoByAddress(wallet.Address);
 ```
 addressInfo => { Balance, TotalSent, TotalReceived, UnconfirmedBalance, TransactionHistory, UnconfirmedTransactionHistory }
-test
